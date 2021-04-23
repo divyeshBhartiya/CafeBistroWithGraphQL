@@ -1,10 +1,8 @@
 ﻿using CafeBistroWithGraphQL.API.Data;
 using CafeBistroWithGraphQL.API.Interfaces;
 using CafeBistroWithGraphQL.API.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CafeBistroWithGraphQL.API.Services
 {

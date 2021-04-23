@@ -10,17 +10,10 @@ using GraphQL.Server;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CafeBistroWithGraphQL.API
 {
@@ -36,15 +29,36 @@ namespace CafeBistroWithGraphQL.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IMenuService, MenuService>();
             services.AddTransient<ISubMenuService, SubMenuService>();
             services.AddTransient<IReservationService, ReservationService>();
 
-            services.AddTransient<ProductType>();
-            services.AddTransient<ProductQuery>();
-            services.AddTransient<ProductMutation>();
-            services.AddTransient<ISchema, ProductSchema>();
+            services.AddTransient<MenuType>();
+            services.AddTransient<SubMenuType>();
+            services.AddTransient<ReservationType>();
+
+            services.AddTransient<MenuQuery>();
+            services.AddTransient<SubMenuQuery>();
+            services.AddTransient<ReservationQuery>();
+            services.AddTransient<RootQuery>();
+
+            services.AddTransient<MenuMutation>();
+            services.AddTransient<SubMenuMutation>();
+            services.AddTransient<ReservationMutation>();
+            services.AddTransient<RootMutation>();
+
+            services.AddTransient<MenuInputType>();
+            services.AddTransient<SubMenuInputType>();
+            services.AddTransient<ReservationInputType>();
+            services.AddTransient<ISchema, RootSchema>();
+
+            // Only for sample project
+            //services.AddTransient<IProductService, ProductService>();
+            //services.AddTransient<ProductType>();
+            //services.AddTransient<ProductQuery>();
+            //services.AddTransient<ProductMutation>();
+            //services.AddTransient<ISchema, ProductSchema>();
+            // Only for sample project
 
             services.AddGraphQL(options =>
             {
@@ -53,7 +67,7 @@ namespace CafeBistroWithGraphQL.API
 
             services.AddDbContext<GraphQLDbContext>(option =>
             {
-                option.UseSqlServer(@"Data Source= (localdb)\MSSQLLocalDB; Initial Catalog= CafeBistroDb; Integrated Security = True;");
+                option.UseSqlServer(@"Data Source= (localdb)\MSSQLLocalDB; Initial Catalog= CaffeBistroDb; Integrated Security = True;");
             });
         }
 

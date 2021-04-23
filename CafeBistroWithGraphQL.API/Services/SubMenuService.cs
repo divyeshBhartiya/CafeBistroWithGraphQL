@@ -1,10 +1,8 @@
 ﻿using CafeBistroWithGraphQL.API.Data;
 using CafeBistroWithGraphQL.API.Interfaces;
 using CafeBistroWithGraphQL.API.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CafeBistroWithGraphQL.API.Services
 {
@@ -30,7 +28,7 @@ namespace CafeBistroWithGraphQL.API.Services
             _graphQLDbContext.SaveChanges();
             return subMenu;
         }
-        public SubMenu UpdateMenu(int subMenuId, SubMenu subMenu)
+        public SubMenu UpdateSubMenu(int subMenuId, SubMenu subMenu)
         {
             var subMenuObj = _graphQLDbContext.SubMenus.Find(subMenuId);
             subMenuObj.Name = subMenu.Name;

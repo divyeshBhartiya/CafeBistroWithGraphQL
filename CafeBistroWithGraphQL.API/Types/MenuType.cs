@@ -1,19 +1,20 @@
-﻿using CafeBistroWithGraphQL.API.Models;
+﻿using CafeBistroWithGraphQL.API.Interfaces;
+using CafeBistroWithGraphQL.API.Models;
 using GraphQL.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CafeBistroWithGraphQL.API.Types
 {
     public class MenuType : ObjectGraphType<Menu>
     {
-        public MenuType()
+        public MenuType(ISubMenuService subMenuService)
         {
             Field(m => m.Id);
             Field(m => m.Name);
             Field(m => m.ImageUrl);
+            Field<ListGraphType<SubMenuType>>("subMenus", resolve: context => 
+            { 
+                return subMenuService.GetSubMenus(context.Source.Id); 
+            });
         }
     }
 }

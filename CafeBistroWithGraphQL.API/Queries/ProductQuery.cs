@@ -3,10 +3,6 @@ using CafeBistroWithGraphQL.API.Models;
 using CafeBistroWithGraphQL.API.Types;
 using GraphQL;
 using GraphQL.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CafeBistroWithGraphQL.API.Queries
 {
