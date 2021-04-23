@@ -37,6 +37,10 @@ namespace CafeBistroWithGraphQL.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IMenuService, MenuService>();
+            services.AddTransient<ISubMenuService, SubMenuService>();
+            services.AddTransient<IReservationService, ReservationService>();
+
             services.AddTransient<ProductType>();
             services.AddTransient<ProductQuery>();
             services.AddTransient<ProductMutation>();
